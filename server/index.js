@@ -108,6 +108,9 @@ app.post('/login',async (req,res)=>{
 //     }
 // })
 
+
+
+
 const storage = multer.diskStorage({
     destination: function (req, file, cb) {
         cb(null, './uploads/');  // Destination folder
@@ -117,7 +120,10 @@ const storage = multer.diskStorage({
     }
 });
 
-const upload = multer({ storage: storage });
+const upload = multer({
+    storage: storage,
+  }).array('shopimages', 10); // 10 is the max number of images you allow for this field
+  
 
 // Route to create a new shop with multiple images and services with prices
 app.post('/create', upload.array('images', 10), async (req, res) => {
@@ -125,6 +131,7 @@ app.post('/create', upload.array('images', 10), async (req, res) => {
         // Array of image paths
         const imagePaths = req.files.map(file => file.path);
 
+        console.log(req.body); 
         // Parse the services and prices array from the request body
         const servicesWithPrices = JSON.parse(req.body.services); // Expecting an array of objects
 
@@ -143,8 +150,14 @@ app.post('/create', upload.array('images', 10), async (req, res) => {
 
         const savedShop = await newShop.save();
         res.status(201).json(savedShop);
+
     } catch (error) {
-        res.status(500).json({ message: 'Error creating shop', error });
+
+        res.status(500).json({ 
+            message: 'Error creating shop',
+            error 
+        });
+        
     }
 });
  

@@ -121,7 +121,7 @@ export function RegisterShop() {
     console.log(formData.get('photos'));
 
     try {
-      const response = await fetch("http://localhost:3000/shopregister", {
+      const response = await fetch("http://localhost:8080/create", {
         method: "POST",
         body: formData,
       });
@@ -176,7 +176,7 @@ export function RegisterShop() {
                       {suggestion.display_name}
                     </li>
                   ))}
-                </ul>
+                </ul> 
               )}
 
               {/* Leaflet Map */}
