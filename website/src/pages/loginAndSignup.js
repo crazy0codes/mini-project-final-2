@@ -58,7 +58,7 @@ export default function LandingPage() {
         navigate('/');
       })
       .catch(err => {
-        alert('User already exists');
+        alert(err);
       });
   };
 

@@ -269,5 +269,5 @@ app.delete("/shop/:shopId/service/:serviceIndex", async (req, res) => {
 
 // Start the server
 app.listen(3001, () => {
-    console.log(`Server running on process.env.REACT_APP_URL`);
+    console.log(`Server running on ${3001}`);
 });
