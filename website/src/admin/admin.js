@@ -18,7 +18,7 @@ export default function AdminShopManagement() {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    fetch('http://localhost:3001/shops', {
+    fetch(`${process.env.REACT_APP_URL}/shops`, {
       method: 'GET',
       headers: {
         'Content-Type': 'application/json',
@@ -47,7 +47,7 @@ export default function AdminShopManagement() {
   }
 
   const handleSaveShop = () => {
-    fetch(`http://localhost:3001/shop/${selectedShop._id}`, {
+    fetch(`${process.env.REACT_APP_URL}/shop/${selectedShop._id}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -81,7 +81,7 @@ export default function AdminShopManagement() {
 
   const handleDeleteShop = (shopId) => {
     console.log('Deleting shop:', shopId);
-    fetch(`http://localhost:3001/shop/${shopId}`, {
+    fetch(`${process.env.REACT_APP_URL}/shop/${shopId}`, {
       method: 'DELETE',
     })
       .then((res) => {

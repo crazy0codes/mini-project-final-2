@@ -17,7 +17,7 @@ export default function CommentBox({ shopId, setComment, comment }) {
     }
 
     try {
-      const response = await fetch(`http://localhost:3001/shop/${shopId}/comment`, {
+      const response = await fetch(`${process.env.REACT_APP_URL}/shop/${shopId}/comment`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

@@ -7,6 +7,7 @@ const mongoose = require("mongoose");
 const Shop = require("./models/shoplist");
 const UserModel = require("./models/userdetails");
 const Comments = require('./models/comments');
+require('dotenv').config();
 
 const app = express();
 
@@ -18,7 +19,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Connect to MongoDB
-mongoose.connect("mongodb://localhost:27017/users", { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(process.env.MONGODB_URI, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("MongoDB connected"))
     .catch(err => console.error("MongoDB connection error:", err));
 
@@ -268,5 +269,5 @@ app.delete("/shop/:shopId/service/:serviceIndex", async (req, res) => {
 
 // Start the server
 app.listen(3001, () => {
-    console.log(`Server running on http://localhost:3001`);
+    console.log(`Server running on process.env.REACT_APP_URL`);
 });

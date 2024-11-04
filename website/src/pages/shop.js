@@ -18,7 +18,7 @@ export default function Shop() {
   const [shop, setShop] = useState({});
 
   useEffect(() => {
-    fetch(`http://localhost:3001/shop/${shopId}`, {
+    fetch(`${process.env.REACT_APP_URL}/shop/${shopId}`, {
       method: "GET",
       headers: {
         "Content-Type": "application/json",

@@ -24,7 +24,7 @@ export default function LandingPage() {
 
   const handleLoginSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/login', { email: formData.email, password: formData.password })
+    axios.post(`${process.env.REACT_APP_URL}/login`, { email: formData.email, password: formData.password })
       .then(res => {
         if (res.data.message === "Login successful") {
           setIsLoggedIn(() => {
@@ -46,7 +46,7 @@ export default function LandingPage() {
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
-    axios.post('http://localhost:3001/register', formData)
+    axios.post(`${process.env.REACT_APP_URL}/register`, formData)
       .then(res => {
         setIsLoggedIn(() => {
           localStorage.setItem('email', JSON.stringify(formData.email));

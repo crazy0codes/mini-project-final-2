@@ -29,7 +29,7 @@ function App() {
 
   useEffect(() => {
     async function loadShops(location) {
-      await fetch(`http://localhost:3001/shops/${location}`, {
+      await fetch(`${process.env.REACT_APP_URL}/shops/${location}`, {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -93,8 +93,6 @@ function App() {
   );
   
   
-
-  //return <ShopsContext.Provider value={{isLoggedIn}} ><AdminShopManagement /> </ShopsContext.Provider>
 }
 
 export default App;

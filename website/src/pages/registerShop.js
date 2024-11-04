@@ -115,7 +115,7 @@ export function RegisterShop() {
     formData.append("services", JSON.stringify(services));
   
     try {
-      const response = await fetch("http://localhost:3001/shopregister", {
+      const response = await fetch(`${process.env.REACT_APP_URL}/shopregister`, {
         method: "POST",
         body: formData,
       });

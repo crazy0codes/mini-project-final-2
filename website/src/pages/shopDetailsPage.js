@@ -19,7 +19,7 @@ export default function ShopDetailsPage() {
   const [searchQuery, setSearchQuery] = useState('')
 
   useEffect(() => {
-    fetch(`http://localhost:3001/user/shop?email=${email}`, {
+    fetch(`${process.env.REACT_APP_URL}/user/shop?email=${email}`, {
       method: 'GET',
       headers: { 'Content-Type': 'application/json' },
     })
@@ -46,7 +46,7 @@ export default function ShopDetailsPage() {
   }
 
   const handleSaveShop = () => {
-    fetch(`http://localhost:3001/shop/${selectedShop._id}`, {
+    fetch(`${process.env.REACT_APP_URL}/shop/${selectedShop._id}`, {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(selectedShop),
@@ -66,7 +66,7 @@ export default function ShopDetailsPage() {
   }
 
   const handleDeleteShop = (shopId) => {
-    fetch(`http://localhost:3001/shop/${shopId}`, {
+    fetch(`${process.env.REACT_APP_URL}/shop/${shopId}`, {
       method: 'DELETE',
     })
       .then(() => {
