@@ -45,6 +45,7 @@ app.post("/register", async (req, res) => {
     }
     try {
         const existingEmail = await UserModel.findOne({ email });
+        console.log("Existing Email : " + existingEmail);
         if (existingEmail) {
             return res.status(400).json({ message: "Email is already registered" });
         }
